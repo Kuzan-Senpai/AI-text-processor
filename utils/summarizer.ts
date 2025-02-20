@@ -21,9 +21,7 @@ export class Summarizer {
     
             // @ts-expect-error - Chrome AI types
             this.summarizer = await self.ai.summarizer.create({
-            // type: 'key-points',
-            // length: 'short'
-            // Removed the format property since it's causing the error
+            
             });
     
             return this.summarizer;
@@ -45,10 +43,8 @@ export class Summarizer {
                 console.log('Starting summarization process...');
                 console.log('Text length:', text.length);
                 
-                // Try with explicit error catching
                 return await new Promise((resolve, reject) => {
                     try {
-                      // Add timeout to prevent hanging
                         const timeoutId = setTimeout(() => {
                             reject(new Error('Summarization timed out'));
                         }, 30000);
